@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#" className="flex items-center gap-3">
-          <Logo className="scale-75 origin-left" />
+          <Logo className="origin-left" />
         </a>
 
         {/* Desktop Nav */}
