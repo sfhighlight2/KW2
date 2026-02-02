@@ -75,7 +75,7 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS: FAQItem[] = [
   {
     question: 'What is the minimum booking time?',
-    answer: 'Minimum booking is 4 hours for hourly service. Airport transfers are flat-rate.'
+    answer: 'Minimum booking is 2 hours for hourly service. Airport transfers are flat-rate.'
   },
   {
     question: 'Are chauffeurs professionally trained?',
