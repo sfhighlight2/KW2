@@ -52,7 +52,7 @@ const Process: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {steps.map((step, idx) => (
               <motion.div
                 key={step.number}

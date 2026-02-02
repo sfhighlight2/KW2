@@ -208,7 +208,7 @@ const Booking: React.FC = () => {
                       whileTap={{ scale: 0.98 }}
                       className="w-full bg-[#FDFCF0] text-black py-6 md:py-7 rounded-[20px] md:rounded-[28px] font-black uppercase tracking-[0.3em] transition-all text-[12px] md:text-[14px] flex items-center justify-center gap-4 shadow-2xl group/btn mt-4"
                     >
-                      Book Now
+                      Reserve Now
                       <ArrowRight size={22} className="group-hover/btn:translate-x-2 transition-transform" />
                     </motion.button>
                   </form>

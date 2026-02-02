@@ -27,13 +27,13 @@ const Hero: React.FC = () => {
   return (
     <section className="relative h-screen flex items-center md:items-end overflow-hidden bg-[#141414]">
       {/* Dynamic Background */}
-      <motion.div 
+      <motion.div
         style={{ y: yParallax, x: mousePos.x }}
         className="absolute inset-0 z-0"
       >
-        <img 
-          src="/hero-bg.png" 
-          alt="Kingsway Luxury" 
+        <img
+          src="/hero-bg.png"
+          alt="Kingsway Luxury"
           className="w-full h-full object-cover opacity-50 scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
@@ -82,18 +82,18 @@ const Hero: React.FC = () => {
               transition={{ duration: 1, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button 
+              <button
                 onClick={() => scrollToSection('fleet')}
                 className="group bg-[#FDFCF0] text-black px-10 py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_20px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1 uppercase tracking-widest text-xs"
               >
                 Explore Fleet
                 <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
-              <button 
+              <button
                 onClick={() => scrollToSection('booking')}
                 className="bg-white/5 backdrop-blur-md border border-white/10 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase tracking-widest text-xs text-white"
               >
-                Book Now
+                Reserve Now
               </button>
             </motion.div>
           </div>

@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
             onClick={scrollToBooking}
             className="bg-[#FDFCF0] text-black px-10 py-4 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#FDFCF0]/5"
           >
-            Book Now
+            Reserve Now
           </button>
         </div>
 
@@ -109,7 +109,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
                 onClick={scrollToBooking}
                 className="bg-[#FDFCF0] text-black w-full py-5 rounded-2xl text-lg font-black uppercase tracking-widest"
               >
-                Book Now
+                Reserve Now
               </button>
             </div>
           </motion.div>

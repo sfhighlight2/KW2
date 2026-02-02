@@ -199,23 +199,7 @@ const Fleet: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="hidden md:grid grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-12">
-                  {[
-                    { icon: <Zap size={18} />, label: 'Power', val: car.power },
-                    { icon: <Gauge size={18} />, label: 'Speed', val: car.topSpeed },
-                    { icon: <Flame size={18} />, label: '0-100', val: car.acceleration }
-                  ].map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.05)' }}
-                      className="bg-white/[0.03] rounded-2xl md:rounded-[32px] p-4 md:p-6 border border-white/5 transition-all"
-                    >
-                      <div className="text-[#fffdf2]/80 mb-2 md:mb-4 md:w-6 md:h-6">{stat.icon}</div>
-                      <p className="text-[11px] text-gray-400 uppercase font-black tracking-widest mb-1 md:mb-2">{stat.label}</p>
-                      <p className="text-xs md:text-lg font-bold text-white/90 truncate">{stat.val}</p>
-                    </motion.div>
-                  ))}
-                </div>
+
 
                 <motion.button
                   whileHover={{ scale: 1.02 }}
