@@ -45,7 +45,7 @@ const Booking: React.FC = () => {
     <section id="booking" className="py-20 md:py-32 relative overflow-hidden bg-[#fffdf2] bg-[radial-gradient(circle_at_bottom_right,#fffdf2_0%,#faf9f0_100%)] transition-colors duration-700">
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-center">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -61,14 +61,14 @@ const Booking: React.FC = () => {
             <p className="text-gray-700 text-lg md:text-xl font-light mb-8 md:mb-12 max-w-lg leading-relaxed">
               Your journey begins here. Enter your details below and our concierge team will handle the rest with absolute discretion and precision.
             </p>
-            
+
             <div className="space-y-4 md:space-y-6">
               {[
                 { text: 'Secure VIP Booking' },
                 { text: 'Elite Chauffeur Matching' },
                 { text: 'Transparent Corporate Pricing' }
               ].map((item, idx) => (
-                <motion.div 
+                <motion.div
                   key={idx}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -85,7 +85,7 @@ const Booking: React.FC = () => {
             </div>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             id="reservation-form"
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -104,7 +104,7 @@ const Booking: React.FC = () => {
                   <h3 className="text-2xl md:text-3xl font-black text-[#FDFCF0] mb-8 uppercase tracking-tight border-b border-white/5 pb-4">
                     Trip Details
                   </h3>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
                     {/* Personal Info Group */}
                     <div className="space-y-4 md:space-y-5">
@@ -176,8 +176,8 @@ const Booking: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Date/Time Group */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                    {/* Date/Time Group - Hidden */}
+                    <div className="hidden grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
                       <div className="relative group/field">
                         <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
                         <input
@@ -208,7 +208,7 @@ const Booking: React.FC = () => {
                       whileTap={{ scale: 0.98 }}
                       className="w-full bg-[#FDFCF0] text-black py-6 md:py-7 rounded-[20px] md:rounded-[28px] font-black uppercase tracking-[0.3em] transition-all text-[12px] md:text-[14px] flex items-center justify-center gap-4 shadow-2xl group/btn mt-4"
                     >
-                      Book Chauffeur Service
+                      Book Now
                       <ArrowRight size={22} className="group-hover/btn:translate-x-2 transition-transform" />
                     </motion.button>
                   </form>
@@ -221,7 +221,7 @@ const Booking: React.FC = () => {
                   exit={{ opacity: 0, scale: 0.9 }}
                   className="bg-[#1c1c1c] border border-white/10 rounded-[32px] md:rounded-[48px] p-10 md:p-16 text-center flex flex-col items-center justify-center min-h-[400px] md:min-h-[600px] shadow-2xl"
                 >
-                  <motion.div 
+                  <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", damping: 12, stiffness: 200 }}
@@ -233,7 +233,7 @@ const Booking: React.FC = () => {
                   <p className="text-white/60 max-w-sm mx-auto leading-relaxed text-lg md:text-2xl font-light">
                     Your luxury chauffeur has been notified. You will receive a secure dispatch message shortly.
                   </p>
-                  <motion.button 
+                  <motion.button
                     onClick={() => setIsSubmitted(false)}
                     className="mt-10 md:mt-16 text-[12px] font-black uppercase tracking-[0.4em] text-white/30 hover:text-[#FDFCF0] transition-colors"
                   >

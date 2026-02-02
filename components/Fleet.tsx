@@ -7,7 +7,7 @@ import { ArrowRight, Zap, Gauge, Flame, Info, ChevronLeft, ChevronRight } from '
 const Fleet: React.FC = () => {
   const [hoveredCar, setHoveredCar] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  
+
   // For infinite scroll simulation, we triple the items to ensure the user can't easily reach the end
   const infiniteFleet = [...FLEET, ...FLEET, ...FLEET];
 
@@ -21,7 +21,7 @@ const Fleet: React.FC = () => {
       const { scrollLeft, clientWidth } = scrollRef.current;
       const moveDistance = clientWidth * 0.8;
       const scrollTo = direction === 'left' ? scrollLeft - moveDistance : scrollLeft + moveDistance;
-      
+
       scrollRef.current.scrollTo({
         left: scrollTo,
         behavior: 'smooth'
@@ -38,7 +38,7 @@ const Fleet: React.FC = () => {
       const { scrollLeft, scrollWidth, clientWidth } = el;
       // If we've scrolled past the first set of items (FLEET.length), snap back to center set
       const itemWidth = scrollWidth / 3;
-      
+
       if (scrollLeft <= 10) {
         el.scrollLeft = itemWidth + scrollLeft;
       } else if (scrollLeft >= (scrollWidth - clientWidth - 10)) {
@@ -65,14 +65,14 @@ const Fleet: React.FC = () => {
   };
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       x: 50,
       scale: 0.98,
     },
-    visible: { 
-      opacity: 1, 
-      x: 0, 
+    visible: {
+      opacity: 1,
+      x: 0,
       scale: 1,
       transition: {
         duration: 0.8,
@@ -96,7 +96,7 @@ const Fleet: React.FC = () => {
             </span>
           </motion.div>
           <div className="overflow-hidden">
-            <motion.h2 
+            <motion.h2
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
               viewport={{ once: true }}
@@ -107,9 +107,9 @@ const Fleet: React.FC = () => {
             </motion.h2>
           </div>
         </div>
-        
+
         <div className="flex flex-col gap-8 items-start md:items-end">
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -118,17 +118,17 @@ const Fleet: React.FC = () => {
           >
             Each vehicle is professionally maintained, immaculately detailed, and operated by experienced chauffeurs.
           </motion.p>
-          
+
           {/* Desktop Navigation Arrows */}
           <div className="hidden md:flex gap-4">
-            <button 
+            <button
               onClick={() => scroll('left')}
               className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
               aria-label="Previous Car"
             >
               <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
             </button>
-            <button 
+            <button
               onClick={() => scroll('right')}
               className="p-4 rounded-full border border-white/10 hover:bg-white hover:text-black transition-all group"
               aria-label="Next Car"
@@ -141,7 +141,7 @@ const Fleet: React.FC = () => {
 
       {/* Horizontal Scroll Container */}
       <div className="relative group">
-        <motion.div 
+        <motion.div
           ref={scrollRef}
           variants={containerVariants}
           initial="hidden"
@@ -160,15 +160,15 @@ const Fleet: React.FC = () => {
               <div className="hidden md:block absolute inset-0 z-10 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000 bg-gradient-to-tr from-transparent via-white/[0.03] to-transparent -translate-x-full group-hover/card:translate-x-full" style={{ transition: 'transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s' }} />
 
               <div className="aspect-[16/10] relative overflow-hidden">
-                <motion.img 
-                  src={car.image} 
-                  alt={car.name} 
+                <motion.img
+                  src={car.image}
+                  alt={car.name}
                   animate={{ scale: hoveredCar === `${car.id}-${index}` ? 1.08 : 1 }}
                   transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
                   className="w-full h-full object-cover grayscale-[0.3] group-hover/card:grayscale-0 transition-all duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c] via-transparent to-transparent opacity-80" />
-                
+
                 <div className="absolute top-4 right-4 md:top-10 md:right-10 z-20">
                   <motion.div
                     animate={{ rotate: hoveredCar === `${car.id}-${index}` ? 90 : 0, scale: hoveredCar === `${car.id}-${index}` ? 1.1 : 1 }}
@@ -199,13 +199,13 @@ const Fleet: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-12">
+                <div className="hidden md:grid grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-12">
                   {[
                     { icon: <Zap size={18} />, label: 'Power', val: car.power },
                     { icon: <Gauge size={18} />, label: 'Speed', val: car.topSpeed },
                     { icon: <Flame size={18} />, label: '0-100', val: car.acceleration }
                   ].map((stat, i) => (
-                    <motion.div 
+                    <motion.div
                       key={i}
                       whileHover={{ y: -5, backgroundColor: 'rgba(255,255,255,0.05)' }}
                       className="bg-white/[0.03] rounded-2xl md:rounded-[32px] p-4 md:p-6 border border-white/5 transition-all"
@@ -217,7 +217,7 @@ const Fleet: React.FC = () => {
                   ))}
                 </div>
 
-                <motion.button 
+                <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={scrollToBooking}
@@ -231,19 +231,19 @@ const Fleet: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
-        
+
         {/* Scroll Indicator */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-           <motion.div 
-             animate={{ opacity: [0.3, 1, 0.3], x: [0, 5, 0] }}
-             transition={{ duration: 2, repeat: Infinity }}
-             className="text-[11px] font-black uppercase tracking-[0.4em] text-[#fffdf2]/30"
-           >
-             Swipe to view more
-           </motion.div>
+          <motion.div
+            animate={{ opacity: [0.3, 1, 0.3], x: [0, 5, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-[11px] font-black uppercase tracking-[0.4em] text-[#fffdf2]/30"
+          >
+            Swipe to view more
+          </motion.div>
         </div>
       </div>
-      
+
       <style>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;

@@ -32,19 +32,18 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
     const isMobile = window.innerWidth < 768;
     const targetId = isMobile ? 'reservation-form' : 'booking';
     const elem = document.getElementById(targetId);
-    
+
     if (elem) {
       elem.scrollIntoView({ behavior: 'smooth' });
     }
-    
+
     setIsMobileMenuOpen(false);
   };
 
   return (
-    <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? 'bg-[#141414]/95 backdrop-blur-xl py-2 border-b border-white/5' : 'bg-transparent py-6'
-      }`}
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-[#141414]/95 backdrop-blur-xl py-2 border-b border-white/5' : 'bg-transparent py-6'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#" className="flex items-center gap-3">
@@ -54,8 +53,8 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
-            <a 
-              key={link.name} 
+            <a
+              key={link.name}
               href={link.href}
               onClick={(e) => handleLinkClick(e, link.href)}
               className="text-[13px] font-bold uppercase tracking-[0.2em] text-white/60 hover:text-[#FDFCF0] transition-colors"
@@ -69,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
           <div className="flex items-center gap-5 text-white/40">
             <Instagram size={20} className="cursor-pointer hover:text-white transition-colors" />
           </div>
-          <button 
+          <button
             onClick={scrollToBooking}
             className="bg-[#FDFCF0] text-black px-10 py-4 rounded-2xl text-[12px] font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#FDFCF0]/5"
           >
@@ -78,7 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
         </div>
 
         {/* Mobile Toggle */}
-        <button 
+        <button
           className="md:hidden text-white p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -97,16 +96,16 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
           >
             <div className="flex flex-col gap-8 items-center text-center">
               {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
+                <a
+                  key={link.name}
                   href={link.href}
-                  className="text-2xl font-black uppercase tracking-widest text-[#FDFCF0]"
+                  className="text-lg font-black uppercase tracking-widest text-[#FDFCF0]"
                   onClick={(e) => handleLinkClick(e, link.href)}
                 >
                   {link.name}
                 </a>
               ))}
-              <button 
+              <button
                 onClick={scrollToBooking}
                 className="bg-[#FDFCF0] text-black w-full py-5 rounded-2xl text-lg font-black uppercase tracking-widest"
               >
