@@ -10,7 +10,7 @@ import Booking from './components/Booking';
 import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import AIConcierge from './components/AIConcierge';
+
 import Preloader from './components/Preloader';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -39,14 +39,14 @@ const App: React.FC = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
           >
             <Navbar isScrolled={scrolled} />
-            
+
             <main>
               <Hero />
-              
+
               <section id="fleet" className="scroll-mt-20">
                 <Fleet />
               </section>
-              
+
               <section id="process" className="scroll-mt-20">
                 <Process />
               </section>
@@ -56,19 +56,19 @@ const App: React.FC = () => {
               <section id="booking" className="scroll-mt-20">
                 <Booking />
               </section>
-              
+
               <section id="testimonials" className="scroll-mt-20">
                 <Testimonials />
               </section>
-              
+
               <section id="faq" className="scroll-mt-20">
                 <FAQ />
               </section>
             </main>
 
             <Footer />
-            
-            <AIConcierge />
+
+
             <ScrollToTop />
           </motion.div>
         )}

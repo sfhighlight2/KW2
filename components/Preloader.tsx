@@ -40,7 +40,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         >
           <Logo className="scale-150" />
         </motion.div>
-        
+
         {/* Ambient Glow */}
         <motion.div
           animate={{ opacity: [0.05, 0.2, 0.05], scale: [1, 1.3, 1] }}
@@ -57,16 +57,16 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
         />
       </div>
 
-      <motion.div 
+      <motion.div
         className="mt-8 text-[9px] uppercase tracking-[0.8em] font-black text-[#FDFCF0]/30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        INITIALIZING CONCIERGE
+        PREPARING ARRIVAL
       </motion.div>
-      
-      <motion.div 
+
+      <motion.div
         className="mt-4 text-3xl font-black font-mono text-[#FDFCF0]"
       >
         {Math.round(progress)}%
