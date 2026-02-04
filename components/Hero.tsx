@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#141414]">
+    <section className="relative h-[85vh] flex flex-col justify-end items-center overflow-hidden bg-[#141414] pb-20">
       {/* Dynamic Background */}
       <motion.div
         style={{ y: yParallax, x: mousePos.x }}
@@ -54,45 +54,32 @@ const Hero: React.FC = () => {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12 md:pt-0 md:pb-32">
-        <div className="max-w-4xl">
-          <div className="text-6xl md:text-[10rem] font-black mb-8 leading-[0.85] tracking-tight" aria-hidden="true" style={{ visibility: 'hidden' }}>
-            <span>Arrive With</span><br />
-            <span>Confidence.</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-12">
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="hidden text-xl text-white/50 max-w-xl leading-relaxed font-light"
-            >
-              Elite luxury transportation in New York. Kingsway delivers refined chauffeur experiences with professionalism, discretion, and comfort — designed for executives, VIPs, and clients who expect more than just a ride.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center w-full"
-            >
-              <button
-                onClick={() => scrollToSection('fleet')}
-                className="group bg-[#FDFCF0] text-black px-10 py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_20px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1 uppercase tracking-widest text-xs"
-              >
-                Explore Fleet
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button
-                onClick={() => scrollToSection('booking')}
-                className="bg-white/5 backdrop-blur-md border border-white/10 px-10 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase tracking-widest text-xs text-white"
-              >
-                Reserve Now
-              </button>
-            </motion.div>
-          </div>
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
+        <div className="text-6xl md:text-[10rem] font-black mb-8 leading-[0.85] tracking-tight absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none" aria-hidden="true" style={{ visibility: 'hidden' }}>
+          <span>Arrive With</span><br />
+          <span>Confidence.</span>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-2xl"
+        >
+          <button
+            onClick={() => scrollToSection('fleet')}
+            className="group bg-[#FDFCF0] text-black px-8 py-5 rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-white transition-all shadow-[0_20px_40px_rgba(255,255,255,0.05)] hover:-translate-y-1 uppercase tracking-widest text-xs flex-1 w-full sm:w-auto"
+          >
+            Explore Fleet
+            <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </button>
+          <button
+            onClick={() => scrollToSection('booking')}
+            className="bg-white/5 backdrop-blur-md border border-white/10 px-8 py-5 rounded-2xl font-bold hover:bg-white/10 transition-all uppercase tracking-widest text-xs text-white flex-1 w-full sm:w-auto text-center"
+          >
+            Reserve Now
+          </button>
+        </motion.div>
       </div>
     </section>
   );
