@@ -101,9 +101,12 @@ const Booking: React.FC = () => {
                   exit={{ opacity: 0, scale: 1.05, filter: 'blur(10px)' }}
                   className="bg-[#1c1c1c] border border-white/10 rounded-[32px] md:rounded-[48px] p-6 md:p-14 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.5)] relative overflow-hidden group"
                 >
-                  <h3 className="text-2xl md:text-3xl font-black text-[#FDFCF0] mb-8 uppercase tracking-tight border-b border-white/5 pb-4">
+                  <h3 className="text-2xl md:text-3xl font-black text-[#FDFCF0] mb-2 uppercase tracking-tight border-b border-white/5 pb-4">
                     Trip Details
                   </h3>
+                  <p className="text-white/40 text-sm md:text-base mb-8 font-medium leading-relaxed">
+                    90-Minute Guarantee — For metropolitan New York City area, we guarantee vehicle availability within 90 minutes of booking.
+                  </p>
 
                   <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
                     {/* Personal Info Group */}
