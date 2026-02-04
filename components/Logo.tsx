@@ -14,7 +14,7 @@ const Logo: React.FC<LogoProps> = ({ className = "", light = true }) => {
     <motion.div
       initial="initial"
       whileHover="hover"
-      className={`flex items-center justify-center ${className}`}
+      className={`flex items-center ${className}`}
     >
       <img
         src="/logo.png"
