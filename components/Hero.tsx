@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative h-screen flex items-center md:items-end overflow-hidden bg-[#141414]">
+    <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#141414]">
       {/* Dynamic Background */}
       <motion.div
         style={{ y: yParallax, x: mousePos.x }}
