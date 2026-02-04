@@ -56,15 +56,10 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12 md:pt-0 md:pb-32">
         <div className="max-w-4xl">
-          <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl md:text-[10rem] font-black mb-8 leading-[0.85] tracking-tight"
-          >
-            Arrive With <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#FDFCF0] to-[#FDFCF0]/20">Confidence.</span>
-          </motion.h1>
+          <div className="text-6xl md:text-[10rem] font-black mb-8 leading-[0.85] tracking-tight" aria-hidden="true" style={{ visibility: 'hidden' }}>
+            <span>Arrive With</span><br />
+            <span>Confidence.</span>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-end">
             <motion.p

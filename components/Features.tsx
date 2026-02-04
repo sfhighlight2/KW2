@@ -41,7 +41,7 @@ const Features: React.FC = () => {
     <section className="py-32 bg-[#141414] relative overflow-hidden">
       {/* Decorative gradient background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(253,252,240,0.02)_0%,transparent_70%)] pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center mb-24">
           <motion.span
@@ -68,11 +68,11 @@ const Features: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-white/60 max-w-2xl mx-auto text-lg font-light leading-relaxed"
           >
-            More than transportation — we deliver peace of mind, privacy, and professionalism for discerning clients.
+            Get VIP Reservations and Accomodations to Clubs, Events and Restaurants for Booking with Kingsway
           </motion.p>
         </div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -92,9 +92,9 @@ const Features: React.FC = () => {
               key={index}
               variants={{
                 hidden: { opacity: 0, y: 40, scale: 0.95 },
-                visible: { 
-                  opacity: 1, 
-                  y: 0, 
+                visible: {
+                  opacity: 1,
+                  y: 0,
                   scale: 1,
                   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
                 }
