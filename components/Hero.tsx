@@ -61,12 +61,12 @@ const Hero: React.FC = () => {
             <span>Confidence.</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-end">
+          <div className="flex flex-col items-center gap-12">
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="text-xl text-white/50 max-w-xl leading-relaxed font-light"
+              className="hidden text-xl text-white/50 max-w-xl leading-relaxed font-light"
             >
               Elite luxury transportation in New York. Kingsway delivers refined chauffeur experiences with professionalism, discretion, and comfort — designed for executives, VIPs, and clients who expect more than just a ride.
             </motion.p>
@@ -75,7 +75,7 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center w-full"
             >
               <button
                 onClick={() => scrollToSection('fleet')}

@@ -31,7 +31,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onLoadingComplete }) => {
       exit={{ opacity: 0, scale: 1.1, filter: "blur(20px)", transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }}
       className="fixed inset-0 z-[100] bg-[#141414] flex flex-col items-center justify-center"
     >
-      <div className="relative mb-20">
+      <div className="relative mb-8">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
