@@ -31,11 +31,15 @@ const Hero: React.FC = () => {
         style={{ y: yParallax, x: mousePos.x }}
         className="absolute inset-0 z-0"
       >
-        <img
-          src="/hero-bg.png"
-          alt="Kingsway Luxury"
-          className="w-full h-full object-cover opacity-50 scale-110"
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-50 scale-110"
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
         <div className="absolute inset-0 bg-black/20" />
       </motion.div>
