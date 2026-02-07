@@ -6,10 +6,10 @@ import { Star } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
   return (
-    <div className="py-32 px-6 md:px-12 overflow-hidden bg-[#141414]">
+    <div className="py-16 md:py-32 px-6 md:px-12 overflow-hidden bg-[#141414]">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <motion.div 
+        <div className="flex flex-col md:flex-row justify-between items-end mb-10 md:mb-20 gap-4 md:gap-8">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -21,10 +21,10 @@ const Testimonials: React.FC = () => {
             </h2>
           </motion.div>
           <motion.div
-             initial={{ opacity: 0, x: 20 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-             transition={{ duration: 1, delay: 0.3 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
             className="bg-[#1c1c1c] px-6 py-4 rounded-full border border-white/10 flex items-center gap-4 shadow-xl"
           >
             <div className="flex -space-x-3">

@@ -38,12 +38,12 @@ const usps = [
 
 const Features: React.FC = () => {
   return (
-    <section className="py-32 bg-[#141414] relative overflow-hidden">
+    <section className="py-16 md:py-32 bg-[#141414] relative overflow-hidden">
       {/* Decorative gradient background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(253,252,240,0.02)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center mb-24">
+        <div className="text-center mb-12 md:mb-24">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -61,15 +61,17 @@ const Features: React.FC = () => {
           >
             The Standard of <br /> Luxury Transportation.
           </motion.h2>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/60 max-w-2xl mx-auto text-lg font-light leading-relaxed"
+            className="group max-w-2xl mx-auto p-10 rounded-[40px] bg-[#1c1c1c] border border-white/5 hover:border-[#FDFCF0]/20 transition-all duration-500 hover:shadow-2xl hover:shadow-[#FDFCF0]/5"
           >
-            Get VIP Reservations and Accomodations to Clubs, Events and Restaurants for Booking with Kingsway
-          </motion.p>
+            <p className="text-white/60 text-lg font-light leading-relaxed group-hover:text-white/80 transition-colors">
+              Get VIP Reservations and Accomodations to Clubs, Events and Restaurants for Booking with Kingsway
+            </p>
+          </motion.div>
         </div>
 
         <motion.div

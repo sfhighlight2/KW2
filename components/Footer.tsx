@@ -11,10 +11,10 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer id="footer" className="bg-[#141414] pt-32 pb-16 border-t border-white/5">
+    <footer id="footer" className="bg-[#141414] pt-10 md:pt-32 pb-16 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row justify-between gap-20 mb-32">
-          
+
           <div className="max-w-sm">
             <Logo className="origin-left scale-110 mb-8" />
             <p className="text-white/70 font-light text-xl leading-relaxed mb-10">
