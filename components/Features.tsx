@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Clock, Award, Plane, Zap, Coffee } from 'lucide-react';
+import { Shield, Clock, Award, Plane, Zap, Coffee, Star } from 'lucide-react';
 
 const usps = [
   {
@@ -27,12 +27,17 @@ const usps = [
   {
     icon: <Zap size={32} />,
     title: 'On-Time Commitment',
-    description: 'Precision scheduling so you’re never rushed or delayed.'
+    description: 'Precision scheduling so you\'re never rushed or delayed.'
   },
   {
     icon: <Coffee size={32} />,
     title: 'Personalized Comfort',
     description: 'Climate control, quiet ride preferences, and tailored service.'
+  },
+  {
+    icon: <Star size={32} />,
+    title: 'VIP Reservations',
+    description: 'Get VIP Reservations and Accomodations to Clubs, Events and Restaurants for Booking with Kingsway.'
   }
 ];
 
@@ -57,21 +62,10 @@ const Features: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black text-[#FDFCF0] mb-6 tracking-tighter uppercase"
+            className="text-4xl md:text-6xl font-black text-[#FDFCF0] tracking-tighter uppercase"
           >
             The Standard of <br /> Luxury Transportation.
           </motion.h2>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="group max-w-2xl mx-auto p-10 rounded-[40px] bg-[#1c1c1c] border border-white/5 hover:border-[#FDFCF0]/20 transition-all duration-500 hover:shadow-2xl hover:shadow-[#FDFCF0]/5"
-          >
-            <p className="text-white/60 text-lg font-light leading-relaxed group-hover:text-white/80 transition-colors">
-              Get VIP Reservations and Accomodations to Clubs, Events and Restaurants for Booking with Kingsway
-            </p>
-          </motion.div>
         </div>
 
         <motion.div
