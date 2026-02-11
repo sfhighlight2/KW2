@@ -31,17 +31,29 @@ const Hero: React.FC = () => {
         style={{ y: yParallax, x: mousePos.x }}
         className="absolute inset-0 z-0"
       >
+        {/* Mobile Video */}
         <video
           autoPlay
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-50 scale-110"
+          className="absolute inset-0 w-full h-full object-cover scale-110 md:hidden block"
         >
-          <source src="/hero-video.mp4" type="video/mp4" />
+          <source src="/verticle%20for%20mobile.mp4" type="video/mp4" />
         </video>
+
+        {/* Desktop Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover scale-110 hidden md:block"
+        >
+          <source src="/horizontal%20for%20desktop.mp4" type="video/mp4" />
+        </video>
+
         <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-black/20" />
       </motion.div>
 
       {/* Decorative Floating Elements */}
