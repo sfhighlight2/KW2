@@ -22,9 +22,37 @@ const Booking: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setIsSubmitted(true); // Optimistic UI update or show loading state? Original code shows success state immediately.
+    // Let's toggle meaningful state.
+
+    try {
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Success handled by rendering the confirmation view
+      } else {
+        console.error('Failed to send email');
+        // Handle error state if needed, for now keeping original flow but logging error
+        setIsSubmitted(false);
+        alert('There was an issue submitting your request. Please try again.');
+        return;
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitted(false);
+      alert('There was an issue submitting your request. Please try again.');
+      return;
+    }
+
+
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
