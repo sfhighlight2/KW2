@@ -35,7 +35,6 @@ const Footer: React.FC = () => {
                 <li><a href="#process" onClick={(e) => scrollToSection(e, 'process')} className="hover:text-[#FDFCF0] transition-colors">The Process</a></li>
                 <li><a href="#fleet" onClick={(e) => scrollToSection(e, 'fleet')} className="hover:text-[#FDFCF0] transition-colors">Elite Fleet</a></li>
                 <li><a href="#booking" onClick={(e) => scrollToSection(e, 'booking')} className="hover:text-[#FDFCF0] transition-colors">Reservations</a></li>
-                <li><a href="#testimonials" onClick={(e) => scrollToSection(e, 'testimonials')} className="hover:text-[#FDFCF0] transition-colors">Success Stories</a></li>
               </ul>
             </div>
             <div>

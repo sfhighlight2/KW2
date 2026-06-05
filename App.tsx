@@ -7,7 +7,7 @@ import Fleet from './components/Fleet';
 import Process from './components/Process';
 import Features from './components/Features';
 import Booking from './components/Booking';
-import Testimonials from './components/Testimonials';
+// import Testimonials from './components/Testimonials';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 
@@ -57,9 +57,9 @@ const App: React.FC = () => {
                 <Booking />
               </section>
 
-              <section id="testimonials" className="scroll-mt-20">
+              {/* <section id="testimonials" className="scroll-mt-20">
                 <Testimonials />
-              </section>
+              </section> */}
 
               <section id="faq" className="scroll-mt-20">
                 <FAQ />

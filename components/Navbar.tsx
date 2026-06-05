@@ -14,7 +14,6 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
   const navLinks = [
     { name: 'Fleet', href: '#fleet' },
     { name: 'Services', href: '#process' },
-    { name: 'Testimonials', href: '#testimonials' },
     { name: 'FAQ', href: '#faq' },
   ];
 
