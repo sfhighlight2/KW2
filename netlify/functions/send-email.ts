@@ -10,22 +10,24 @@ export default async (req: Request) => {
 
     try {
         const formData = await req.json();
-        const { name, email, phone, pickupLocation, destination, date, time, passengers, serviceType } = formData;
+        const { name, email, phone, pickupLocation, destination, pickupDate, pickupTime, dropoffDate, dropoffTime, passengers, serviceType } = formData;
 
         // Send email to Admin
         await resend.emails.send({
             from: 'Kingsway Chauffeur <info@app.ridekingsway.com>',
-            to: ['kingswayro@gmail.com'],
+            to: ['Kingsway@gmail.com'],
             subject: `New Booking Request: ${name}`,
             html: `
         <h1>New Booking Request</h1>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Pickup:</strong> ${pickupLocation}</p>
-        <p><strong>Destination:</strong> ${destination}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Time:</strong> ${time}</p>
+        <p><strong>Pickup Location:</strong> ${pickupLocation}</p>
+        <p><strong>Pickup Date:</strong> ${pickupDate}</p>
+        <p><strong>Pickup Time:</strong> ${pickupTime}</p>
+        <p><strong>Drop-off Location:</strong> ${destination}</p>
+        <p><strong>Drop-off Date:</strong> ${dropoffDate}</p>
+        <p><strong>Drop-off Time:</strong> ${dropoffTime}</p>
         <p><strong>Passengers:</strong> ${passengers}</p>
         <p><strong>Service Type:</strong> ${serviceType}</p>
       `,
@@ -42,10 +44,12 @@ export default async (req: Request) => {
         <p>Thank you for choosing Kingsway Chauffeur. We have received your booking request.</p>
         <p><strong>Trip Details:</strong></p>
         <ul>
-          <li><strong>Pickup:</strong> ${pickupLocation}</li>
-          <li><strong>Destination:</strong> ${destination}</li>
-          <li><strong>Date:</strong> ${date}</li>
-          <li><strong>Time:</strong> ${time}</li>
+          <li><strong>Pickup Location:</strong> ${pickupLocation}</li>
+          <li><strong>Pickup Date:</strong> ${pickupDate}</li>
+          <li><strong>Pickup Time:</strong> ${pickupTime}</li>
+          <li><strong>Drop-off Location:</strong> ${destination}</li>
+          <li><strong>Drop-off Date:</strong> ${dropoffDate}</li>
+          <li><strong>Drop-off Time:</strong> ${dropoffTime}</li>
         </ul>
         <p>Our team will review your request and contact you shortly to confirm the details.</p>
         <p>Best regards,<br>Kingsway Chauffeur Team</p>

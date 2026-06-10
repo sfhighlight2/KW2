@@ -11,8 +11,10 @@ const Booking: React.FC = () => {
     phone: '',
     pickupLocation: '',
     destination: '',
-    date: '',
-    time: '',
+    pickupDate: '',
+    pickupTime: '',
+    dropoffDate: '',
+    dropoffTime: '',
     passengers: '1',
     serviceType: 'Airport VIP'
   });
@@ -61,8 +63,10 @@ const Booking: React.FC = () => {
         phone: '',
         pickupLocation: '',
         destination: '',
-        date: '',
-        time: '',
+        pickupDate: '',
+        pickupTime: '',
+        dropoffDate: '',
+        dropoffTime: '',
         passengers: '1',
         serviceType: 'Airport VIP'
       });
@@ -207,29 +211,63 @@ const Booking: React.FC = () => {
                       </div>
                     </div>
 
-                    {/* Date/Time Group - Hidden */}
-                    <div className="hidden grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                      <div className="relative group/field">
-                        <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
-                        <input
-                          required
-                          name="date"
-                          value={formData.date}
-                          onChange={handleInputChange}
-                          type="date"
-                          className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white font-medium [color-scheme:dark]"
-                        />
+                    {/* Pickup Date/Time Group */}
+                    <div className="space-y-3">
+                      <label className="text-white/50 text-[11px] uppercase tracking-[0.2em] ml-2 block">Pickup Details</label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                        <div className="relative group/field">
+                          <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
+                          <input
+                            required
+                            name="pickupDate"
+                            value={formData.pickupDate}
+                            onChange={handleInputChange}
+                            type="date"
+                            className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white font-medium [color-scheme:dark]"
+                          />
+                        </div>
+                        <div className="relative group/field">
+                          <Clock className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
+                          <input
+                            required
+                            name="pickupTime"
+                            value={formData.pickupTime}
+                            onChange={handleInputChange}
+                            type="text"
+                            placeholder="e.g., 2:30 PM"
+                            className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
+                          />
+                        </div>
                       </div>
-                      <div className="relative group/field">
-                        <Clock className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
-                        <input
-                          required
-                          name="time"
-                          value={formData.time}
-                          onChange={handleInputChange}
-                          type="time"
-                          className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white font-medium [color-scheme:dark]"
-                        />
+                    </div>
+
+                    {/* Drop-off Date/Time Group */}
+                    <div className="space-y-3">
+                      <label className="text-white/50 text-[11px] uppercase tracking-[0.2em] ml-2 block">Drop-off Details</label>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
+                        <div className="relative group/field">
+                          <Calendar className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
+                          <input
+                            required
+                            name="dropoffDate"
+                            value={formData.dropoffDate}
+                            onChange={handleInputChange}
+                            type="date"
+                            className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white font-medium [color-scheme:dark]"
+                          />
+                        </div>
+                        <div className="relative group/field">
+                          <Clock className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
+                          <input
+                            required
+                            name="dropoffTime"
+                            value={formData.dropoffTime}
+                            onChange={handleInputChange}
+                            type="text"
+                            placeholder="e.g., 3:30 PM"
+                            className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
+                          />
+                        </div>
                       </div>
                     </div>
 
