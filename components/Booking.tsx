@@ -19,9 +19,20 @@ const Booking: React.FC = () => {
     serviceType: 'Airport VIP'
   });
 
+  const formatPhoneNumber = (value: string) => {
+    const phoneNumber = value.replace(/[^\d]/g, '');
+    if (phoneNumber.length < 4) return phoneNumber;
+    if (phoneNumber.length < 7) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'phone') {
+      setFormData(prev => ({ ...prev, [name]: formatPhoneNumber(value) }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -164,7 +175,7 @@ const Booking: React.FC = () => {
                             value={formData.phone}
                             onChange={handleInputChange}
                             type="tel"
-                            placeholder="Phone Number"
+                            placeholder="(555) 555-5555"
                             className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-8 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
                           />
                         </div>
@@ -176,6 +187,8 @@ const Booking: React.FC = () => {
                             value={formData.email}
                             onChange={handleInputChange}
                             type="email"
+                            pattern="[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
+                            title="Please enter a valid email address"
                             placeholder="Email Address"
                             className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-8 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
                           />
@@ -189,6 +202,7 @@ const Booking: React.FC = () => {
                         <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
                         <input
                           required
+                          minLength={8}
                           name="pickupLocation"
                           value={formData.pickupLocation}
                           onChange={handleInputChange}
@@ -201,6 +215,7 @@ const Booking: React.FC = () => {
                         <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-white/30 group-focus-within/field:text-[#FDFCF0] transition-colors" size={20} />
                         <input
                           required
+                          minLength={8}
                           name="destination"
                           value={formData.destination}
                           onChange={handleInputChange}
@@ -234,6 +249,8 @@ const Booking: React.FC = () => {
                             value={formData.pickupTime}
                             onChange={handleInputChange}
                             type="text"
+                            pattern="^(0?[1-9]|1[0-2]):[0-5][0-9]\s?[AaPp][Mm]$"
+                            title="Format: HH:MM AM/PM (e.g., 2:30 PM)"
                             placeholder="e.g., 2:30 PM"
                             className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
                           />
@@ -264,6 +281,8 @@ const Booking: React.FC = () => {
                             value={formData.dropoffTime}
                             onChange={handleInputChange}
                             type="text"
+                            pattern="^(0?[1-9]|1[0-2]):[0-5][0-9]\s?[AaPp][Mm]$"
+                            title="Format: HH:MM AM/PM (e.g., 3:30 PM)"
                             placeholder="e.g., 3:30 PM"
                             className="w-full bg-white/5 border border-white/5 rounded-[20px] md:rounded-[24px] py-4 md:py-6 pl-16 pr-6 outline-none focus:border-[#FDFCF0]/30 focus:bg-white/10 transition-all text-base text-white placeholder:text-white/20 font-medium"
                           />
