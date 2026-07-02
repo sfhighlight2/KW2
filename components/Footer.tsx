@@ -51,7 +51,9 @@ const Footer: React.FC = () => {
               <address className="not-italic text-white/50 text-[13px] font-bold uppercase tracking-[0.2em] leading-loose">
                 New York City, NY <br />
                 United States <br />
-                Available 24/7
+                Available 24/7 <br />
+                <a href="tel:+15512208110" className="hover:text-[#FDFCF0] transition-colors">(551) 220-8110</a> <br />
+                <a href="mailto:Contact@ridekingsway.com" className="hover:text-[#FDFCF0] transition-colors normal-case tracking-normal">Contact@ridekingsway.com</a>
               </address>
             </div>
           </div>

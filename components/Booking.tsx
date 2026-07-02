@@ -299,6 +299,12 @@ const Booking: React.FC = () => {
                       Reserve Now
                       <ArrowRight size={22} className="group-hover/btn:translate-x-2 transition-transform" />
                     </motion.button>
+                    <p className="text-center text-white/40 text-sm font-medium pt-2">
+                      Prefer to book directly? Call{' '}
+                      <a href="tel:+15512208110" className="text-[#FDFCF0] hover:underline">(551) 220-8110</a>
+                      {' '}or email{' '}
+                      <a href="mailto:Contact@ridekingsway.com" className="text-[#FDFCF0] hover:underline">Contact@ridekingsway.com</a>
+                    </p>
                   </form>
                 </motion.div>
               ) : (

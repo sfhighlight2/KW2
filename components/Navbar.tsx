@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Instagram } from 'lucide-react';
+import { Menu, X, Instagram, Phone, Mail } from 'lucide-react';
 import Logo from './Logo';
 
 interface NavbarProps {
@@ -64,6 +64,16 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
         </div>
 
         <div className="hidden md:flex items-center gap-6">
+          <div className="hidden lg:flex items-center gap-4 text-white/50 text-[12px] font-bold tracking-wide">
+            <a href="tel:+15512208110" className="flex items-center gap-1.5 hover:text-[#FDFCF0] transition-colors">
+              <Phone size={14} />
+              (551) 220-8110
+            </a>
+            <a href="mailto:Contact@ridekingsway.com" className="flex items-center gap-1.5 hover:text-[#FDFCF0] transition-colors">
+              <Mail size={14} />
+              Contact@ridekingsway.com
+            </a>
+          </div>
           <div className="flex items-center gap-5 text-white/40">
             <Instagram size={20} className="cursor-pointer hover:text-white transition-colors" />
           </div>
@@ -110,6 +120,16 @@ const Navbar: React.FC<NavbarProps> = ({ isScrolled }) => {
               >
                 Reserve Now
               </button>
+              <div className="flex flex-col items-center gap-3 text-white/60 text-sm font-bold tracking-wide">
+                <a href="tel:+15512208110" className="flex items-center gap-2 hover:text-[#FDFCF0] transition-colors">
+                  <Phone size={16} />
+                  (551) 220-8110
+                </a>
+                <a href="mailto:Contact@ridekingsway.com" className="flex items-center gap-2 hover:text-[#FDFCF0] transition-colors">
+                  <Mail size={16} />
+                  Contact@ridekingsway.com
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
