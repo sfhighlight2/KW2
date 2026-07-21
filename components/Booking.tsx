@@ -40,23 +40,20 @@ const Booking: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Fire-and-forget submission to Netlify Forms, so leads still land in the
+    // Netlify dashboard/email even if the Resend call below fails. Built from
+    // the actual form element (not React state) so the honeypot field's live
+    // value is included — required for Netlify's spam filter to work over AJAX.
     const encodedFormData = new URLSearchParams(
       Array.from(new FormData(e.currentTarget).entries()) as [string, string][],
     ).toString();
+    fetch('/__forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodedFormData,
+    }).catch(error => console.error('Netlify Forms submission failed:', error));
 
     try {
-      const formResponse = await fetch('/__forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodedFormData,
-      });
-
-      if (!formResponse.ok) {
-        throw new Error(`Netlify Forms returned ${formResponse.status}`);
-      }
-
-      setIsSubmitted(true);
-
       const emailResponse = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
@@ -66,8 +63,10 @@ const Booking: React.FC = () => {
       });
 
       if (!emailResponse.ok) {
-        console.error(`Email notification returned ${emailResponse.status}`);
+        throw new Error(`Email notification returned ${emailResponse.status}`);
       }
+
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitted(false);
