@@ -35,10 +35,23 @@ const Booking: React.FC = () => {
     }
   };
 
+  const encodeFormData = (data: Record<string, string>) =>
+    Object.keys(data)
+      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+      .join('&');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitted(true); // Optimistic UI update or show loading state? Original code shows success state immediately.
     // Let's toggle meaningful state.
+
+    // Fire-and-forget submission to Netlify Forms, so leads still land in the
+    // Netlify dashboard/email even if the Resend call below fails.
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encodeFormData({ 'form-name': 'booking', ...formData }),
+    }).catch(error => console.error('Netlify Forms submission failed:', error));
 
     try {
       const response = await fetch('/.netlify/functions/send-email', {
@@ -151,7 +164,15 @@ const Booking: React.FC = () => {
                     90-Minute Guarantee — For metropolitan New York City area, we guarantee vehicle availability within 90 minutes of booking.
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 relative z-10">
+                  <form
+                    onSubmit={handleSubmit}
+                    name="booking"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    className="space-y-5 md:space-y-6 relative z-10"
+                  >
+                    <input type="hidden" name="form-name" value="booking" />
+                    <input type="text" name="bot-field" className="hidden" tabIndex={-1} autoComplete="off" />
                     {/* Personal Info Group */}
                     <div className="space-y-4 md:space-y-5">
                       <div className="relative group/field">
