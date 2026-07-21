@@ -5,6 +5,7 @@ import { Calendar, Clock, MapPin, CheckCircle, ArrowRight, User, Phone, Mail } f
 
 const Booking: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -37,21 +38,26 @@ const Booking: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitted(true); // Optimistic UI update or show loading state? Original code shows success state immediately.
-    // Let's toggle meaningful state.
+    setIsSubmitting(true);
 
-    // Fire-and-forget submission to Netlify Forms, so leads still land in the
-    // Netlify dashboard/email even if the Resend call below fails. Built from
-    // the actual form element (not React state) so the honeypot field's live
-    // value is included — required for Netlify's spam filter to work over AJAX.
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(Array.from(new FormData(e.currentTarget).entries()) as [string, string][]).toString(),
-    }).catch(error => console.error('Netlify Forms submission failed:', error));
+    const encodedFormData = new URLSearchParams(
+      Array.from(new FormData(e.currentTarget).entries()) as [string, string][],
+    ).toString();
 
     try {
-      const response = await fetch('/.netlify/functions/send-email', {
+      const formResponse = await fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encodedFormData,
+      });
+
+      if (!formResponse.ok) {
+        throw new Error(`Netlify Forms returned ${formResponse.status}`);
+      }
+
+      setIsSubmitted(true);
+
+      const emailResponse = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,20 +65,16 @@ const Booking: React.FC = () => {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
-        // Success handled by rendering the confirmation view
-      } else {
-        console.error('Failed to send email');
-        // Handle error state if needed, for now keeping original flow but logging error
-        setIsSubmitted(false);
-        alert('There was an issue submitting your request. Please try again.');
-        return;
+      if (!emailResponse.ok) {
+        console.error(`Email notification returned ${emailResponse.status}`);
       }
     } catch (error) {
       console.error('Error submitting form:', error);
       setIsSubmitted(false);
       alert('There was an issue submitting your request. Please try again.');
       return;
+    } finally {
+      setIsSubmitting(false);
     }
 
 
@@ -164,6 +166,7 @@ const Booking: React.FC = () => {
                   <form
                     onSubmit={handleSubmit}
                     name="booking"
+                    method="POST"
                     data-netlify="true"
                     netlify-honeypot="bot-field"
                     className="space-y-5 md:space-y-6 relative z-10"
@@ -310,11 +313,12 @@ const Booking: React.FC = () => {
 
                     <motion.button
                       type="submit"
+                      disabled={isSubmitting}
                       whileHover={{ scale: 1.02, backgroundColor: '#ffffff' }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-[#FDFCF0] text-black py-6 md:py-7 rounded-[20px] md:rounded-[28px] font-black uppercase tracking-[0.3em] transition-all text-[12px] md:text-[14px] flex items-center justify-center gap-4 shadow-2xl group/btn mt-4"
+                      className="w-full bg-[#FDFCF0] text-black py-6 md:py-7 rounded-[20px] md:rounded-[28px] font-black uppercase tracking-[0.3em] transition-all text-[12px] md:text-[14px] flex items-center justify-center gap-4 shadow-2xl group/btn mt-4 disabled:cursor-wait disabled:opacity-70"
                     >
-                      Reserve Now
+                      {isSubmitting ? 'Submitting...' : 'Reserve Now'}
                       <ArrowRight size={22} className="group-hover/btn:translate-x-2 transition-transform" />
                     </motion.button>
                     <p className="text-center text-white/40 text-sm font-medium pt-2">
