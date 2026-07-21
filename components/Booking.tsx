@@ -35,22 +35,19 @@ const Booking: React.FC = () => {
     }
   };
 
-  const encodeFormData = (data: Record<string, string>) =>
-    Object.keys(data)
-      .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-      .join('&');
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitted(true); // Optimistic UI update or show loading state? Original code shows success state immediately.
     // Let's toggle meaningful state.
 
     // Fire-and-forget submission to Netlify Forms, so leads still land in the
-    // Netlify dashboard/email even if the Resend call below fails.
+    // Netlify dashboard/email even if the Resend call below fails. Built from
+    // the actual form element (not React state) so the honeypot field's live
+    // value is included — required for Netlify's spam filter to work over AJAX.
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encodeFormData({ 'form-name': 'booking', ...formData }),
+      body: new URLSearchParams(Array.from(new FormData(e.currentTarget).entries()) as [string, string][]).toString(),
     }).catch(error => console.error('Netlify Forms submission failed:', error));
 
     try {
